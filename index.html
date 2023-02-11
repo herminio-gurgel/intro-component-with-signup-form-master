@@ -1,41 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn to code</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn to code</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
 </head>
-<body style="background: #2596be url(assets/bg-intro-desktop.png);">
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-6">
-                    <h1 class="title">Learn to code by watching others</h1>
-                    <p>See how experienced developers solve problems in real-time.</p>
-                    <p>Watching scripted tutorials is great, but understanding how developers think is invaluable</p>
-                </div>
-                <div class="column is-6">
-                    <div class="has-background-white px-2 py-2">
-                        <form class="has-background-white">
-                            <div class="field">
-                                <input type="text" class="input" placeholder="First Name">
-                            </div>
-                            <div class="field">
-                                <input type="text" class="input" placeholder="Last Name">
-                            </div>
-                            <div class="field">
-                                <input type="email" class="input" placeholder="Email Address">
-                            </div>
-                            <div class="field">
-                                <input type="password" class="input" placeholder="Password">
-                            </div>  
-                        </form>
-                    </div>
-                </div>
-            </div>
+
+<body style="background: hsl(0, 100%, 74%) url(assets/bg-intro-desktop.png);">
+  <section class="section">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-6 has-text-white">
+          <h1 class="title has-text-white">Learn to code by watching others</h1>
+          <p>See how experienced developers solve problems in real-time.</p>
+          <p>Watching scripted tutorials is great, but understanding how developers think is invaluable</p>
         </div>
-    </section>
+        <div class="column is-6">
+          <div class="box" style="background-color: hsl(248, 32%, 49%);">
+            <p class="has-text-white has-text-centered"><span class="has-text-weight-bold">Try it free 7 days</span> then $20/mo. thereadafter</p>
+          </div>
+          <div class="box has-background-white has-shadow px-4 py-4">
+            <form>
+              <div class="field">
+                <input type="text" class="input" placeholder="First Name">
+              </div>
+              <div class="field">
+                <input type="text" class="input" placeholder="Last Name">
+              </div>
+              <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" type="email" placeholder="Email">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <input class="input" type="password" placeholder="Password">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="control">
+                <button class="button is-success is-fullwidth">CLAIM YOUR FREE TRIAL</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
+
 </html>
