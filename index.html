@@ -6,88 +6,100 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learn to code</title>
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
-    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css">
+    <link rel="stylesheet" href="assets/css/bulma.min.css">
+    <script src="https://kit.fontawesome.com/19865b8115.js" crossorigin="anonymous"></script>
 </head>
 
-<body style="background: hsl(0, 100%, 74%) url(assets/bg-intro-desktop.png);" class="px-6">
-    <section class="section">
-        <div class="container">
-            <div class="columns is-vcentered">
-                <div class="column is-6 has-text-white">
-                    <h1 class="title has-text-white has-text-weight-bold">Learn to code by watching others</h1>
-                    <p>See how experienced developers solve problems in real-time.</p>
-                    <p>Watching scripted tutorials is great, but understanding how developers think is invaluable</p>
-                </div>
-                <div class="column is-6">
-                    <div class="box" style="background-color: hsl(248, 32%, 49%);">
-                        <p class="has-text-white has-text-centered"><span class="has-text-weight-bold">Try it free 7
+<body style="background: hsl(0, 100%, 74%) url(assets/img/png/bg-intro-desktop.png);" class="px-6">
+<section class="section">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column is-6 has-text-white">
+                <h1 class="title has-text-white has-text-weight-bold">Learn to code by watching others</h1>
+                <p>See how experienced developers solve problems in real-time.</p>
+                <p>Watching scripted tutorials is great, but understanding how developers think is invaluable</p>
+            </div>
+            <div class="column is-6">
+                <div class="box" style="background-color: hsl(248, 32%, 49%);">
+                    <p class="has-text-white has-text-centered"><span class="has-text-weight-bold">Try it free 7
                                 days</span> then $20/mo. thereadafter</p>
-                    </div>
-                    <div class="box has-background-white has-shadow px-4 py-4">
-                        <form>
-                            <div class="field">
-                                <p class="control has-icons-left has-icons-right">
-                                    <input type="text" class="input" placeholder="First Name" id="first-name">
-                                    <span class="icon is-small is-left">
+                </div>
+                <div class="box has-background-white has-shadow px-4 py-4">
+                    <form>
+                        <!--nome-->
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input type="text" class="input" placeholder="First Name" id="first-name">
+                                <span class="icon is-small is-left">
                                         <i class="fa-solid fa-user"></i>
                                     </span>
-                                    <span class="icon is-small is-right">
+                                <span class="icon is-small is-right">
                                         <i class="fas" id="first-name-check"></i>
                                     </span>
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control has-icons-left has-icons-right">
-                                    <input type="text" class="input" placeholder="Last Name" id="last-name">
-                                    <span class="icon is-small is-left">
-                                        <i class="fa-solid fa-user"></i>
-                                    </span>
-                                    <span class="icon is-small is-right">
-                                        <i class="fas" id="last-name-check"></i>
-                                    </span>
-                                </p>
-                            </div>
-
-                            <div class="field">
-                                <p class="control has-icons-left has-icons-right">
-                                    <input class="input" type="email" placeholder="Email Adress" id="email">
-                                    <span class="icon is-small is-left">
+                            </p>
+                        </div>
+                        <!--email-->
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" type="email" placeholder="Email Adress" id="email">
+                                <span class="icon is-small is-left">
                                         <i class="fas fa-envelope"></i>
-                                    </span>
-                                    <span class="icon is-small is-right">
+                                </span>
+                                <span class="icon is-small is-right">
                                         <i class="fas" id="email-check"></i>
-                                    </span>
-                                </p>
-                            </div>
+                                </span>
+                            </p>
+                        </div>
+                        <!--senha-->
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="password" placeholder="Password" id="password" maxlength="16">
+                                <span class="icon is-small is-left">
+                                        <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
 
-                            <div class="field">
-                                <p class="control has-icons-left has-icons-right">
-                                    <input class="input" type="password" placeholder="Password" id="password">
-                                    <span class="icon is-small is-left">
+                        <div class="block is-hidden" id="password-strength-block">
+                            <p class="is-size-7">Password Strength</p>
+                            <progress class="progress is-small is-danger" value="0" max="100" id="password-progress"></progress>
+                        </div>
+                        <div class="notification is-hidden" id="password-notification">
+                            <button class="delete" id="password-notification-delete"></button>
+                            <p class="is-size-7" id="password-notification-message">Requisitos da senha</p>
+                        </div>
+                        <!--confirma senha-->
+                        <div class="field">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" type="password" placeholder="Confirm your password"
+                                       id="password-confirm" disabled>
+                                <span class="icon is-small is-left">
                                         <i class="fas fa-lock"></i>
                                     </span>
-                                    <span class="icon is-small is-right">
-                                        <i class="fas" id="password-check"></i>
+                                <span class="icon is-small is-right">
+                                        <i class="fas" id="password-confirm-check"></i>
                                     </span>
-                                </p>
-                            </div>
-                            <p id="message-content" class="is-size-7 has-text-centered has-text-danger"></p>
-                            <div class="control">
-                                <button class="button is-success is-fullwidth mt-1">CLAIM YOUR FREE TRIAL</button>
-                            </div>
-                            <footer class="has-text-centered has-background-white">
-                                <p class="is-size-7">By clicking the button, you are agreeing to our <span><a
-                                            class="has-text-danger has-text-weight-bold">Terms and Services</a></span>
-                                </p>
-                            </footer>
-                        </form>
-                    </div>
+                            </p>
+                        </div>
+
+                        <p id="message-content" class="is-size-7 has-text-centered has-text-danger"></p>
+                        <div class="control">
+                            <button class="button is-success is-fullwidth mt-1">CLAIM YOUR FREE TRIAL</button>
+                        </div>
+                        <footer class="has-text-centered has-background-white">
+                            <p class="is-size-7">By clicking the button, you are agreeing to our <span><a
+                                    class="has-text-danger has-text-weight-bold">Terms and Services</a></span>
+                            </p>
+                        </footer>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-    <script type="module" src="bundle.js"></script>
+    </div>
+</section>
+<!--    <script type="module" src="bundle.js"></script>-->
+<script src="assets/js/jquery.js"></script>
+<script src="app/app.js" type="module"></script>
 </body>
 
 </html>
