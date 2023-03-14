@@ -52,39 +52,67 @@
                         </div>
                         <!--senha-->
                         <div class="field">
-                            <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Password" id="password" maxlength="16">
+                            <p class="control has-icons-left has-icons-right">
+                                <input class="input" type="password" placeholder="Password" id="password"
+                                       maxlength="16">
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-lock"></i>
+                                </span>
+                                <span class="icon is-small is-right">
+                                        <i class="fas" id="password-check"></i>
                                 </span>
                             </p>
                         </div>
 
                         <div class="block is-hidden" id="password-strength-block">
                             <p class="is-size-7">Password Strength</p>
-                            <progress class="progress is-small is-danger" value="0" max="100" id="password-progress"></progress>
+                            <progress class="progress is-small" value="0" max="100" id="password-progress"></progress>
                         </div>
                         <div class="notification is-hidden" id="password-notification">
                             <button class="delete" id="password-notification-delete"></button>
                             <p class="is-size-7" id="password-notification-message">Requisitos da senha</p>
                         </div>
+
                         <!--confirma senha-->
-                        <div class="field">
+                        <div class="field mb-0">
                             <p class="control has-icons-left has-icons-right">
                                 <input class="input" type="password" placeholder="Confirm your password"
                                        id="password-confirm" disabled>
                                 <span class="icon is-small is-left">
                                         <i class="fas fa-lock"></i>
-                                    </span>
+                                </span>
                                 <span class="icon is-small is-right">
                                         <i class="fas" id="password-confirm-check"></i>
-                                    </span>
+                                </span>
                             </p>
                         </div>
+                        <div class="block">
+                            <p id="password-confirm-message" class="is-size-7 has-text-left has-text-danger is-hidden">
+                                Password must be equal</p>
+                        </div>
 
-                        <p id="message-content" class="is-size-7 has-text-centered has-text-danger"></p>
+                        <!--botao enviar-->
                         <div class="control">
-                            <button class="button is-success is-fullwidth mt-1">CLAIM YOUR FREE TRIAL</button>
+                            <button class="button is-success is-fullwidth mt-1" id="submit-button">CLAIM YOUR FREE
+                                TRIAL
+                            </button>
+                        </div>
+
+                        <!--modal-->
+                        <div class="modal" id="modal">
+                            <div class="modal-background"></div>
+                            <div class="modal-card">
+                                <header class="modal-card-head">
+                                    <p class="modal-card-title">Verify data</p>
+                                    <button class="delete" id="modal-close"></button>
+                                </header>
+                                <section class="modal-card-body">
+                                    <p>Please, enter the data</p>
+                                </section>
+                                <footer class="modal-card-foot">
+                                    <button class="button is-success" id="modal-button">Ok</button>
+                                </footer>
+                            </div>
                         </div>
                         <footer class="has-text-centered has-background-white">
                             <p class="is-size-7">By clicking the button, you are agreeing to our <span><a
@@ -97,7 +125,6 @@
         </div>
     </div>
 </section>
-<!--    <script type="module" src="bundle.js"></script>-->
 <script src="assets/js/jquery.js"></script>
 <script src="app/app.js" type="module"></script>
 </body>

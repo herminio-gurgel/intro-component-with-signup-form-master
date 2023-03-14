@@ -12,10 +12,8 @@ export class EmailController {
 
     adicionaEvento() {
         this.inputEmail.on('blur', () => {
-            let email = this.inputEmail.val()
-            let validacao = this.valida(email)
 
-            if (validacao) {
+            if (this.valida()) {
                 this.cadastroView.valido(this.inputEmail, this.checkIcon)
             } else {
                 this.cadastroView.invalido(this.inputEmail, this.checkIcon)
@@ -23,23 +21,24 @@ export class EmailController {
         })
     }
 
-    valida(email) {
+    valida() {
+        let email = this.inputEmail.val()
         if (!email)
             return false;
 
         if (email.length > 254)
             return false;
 
-        var valid = this.regex.test(email);
+        let valid = this.regex.test(email);
         if (!valid)
             return false;
 
         // Further checking of some things regex can't handle
-        var parts = email.split("@");
+        let parts = email.split("@");
         if (parts[0].length > 64)
             return false;
 
-        var domainParts = parts[1].split(".");
+        let domainParts = parts[1].split(".");
         if (domainParts.some(function (part) {
             return part.length > 63;
         }))
