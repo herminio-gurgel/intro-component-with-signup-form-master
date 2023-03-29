@@ -31,24 +31,26 @@
                             <p class="control has-icons-left has-icons-right">
                                 <input type="text" class="input" placeholder="First Name" id="first-name">
                                 <span class="icon is-small is-left">
-                                        <i class="fa-solid fa-user"></i>
-                                    </span>
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
                                 <span class="icon is-small is-right">
-                                        <i class="fas" id="first-name-check"></i>
-                                    </span>
+                                    <i class="fas" id="first-name-check"></i>
+                                </span>
                             </p>
+                            <p class="help is-danger is-hidden" id="name-help"></p>
                         </div>
                         <!--email-->
                         <div class="field">
                             <p class="control has-icons-left has-icons-right">
                                 <input class="input" type="email" placeholder="Email Adress" id="email">
                                 <span class="icon is-small is-left">
-                                        <i class="fas fa-envelope"></i>
+                                    <i class="fas fa-envelope"></i>
                                 </span>
                                 <span class="icon is-small is-right">
-                                        <i class="fas" id="email-check"></i>
+                                    <i class="fas" id="email-check"></i>
                                 </span>
                             </p>
+                            <p class="help is-danger is-hidden" id="email-help"></p>
                         </div>
                         <!--senha-->
                         <div class="field">
@@ -56,39 +58,32 @@
                                 <input class="input" type="password" placeholder="Password" id="password"
                                        maxlength="16">
                                 <span class="icon is-small is-left">
-                                        <i class="fas fa-lock"></i>
+                                    <i class="fas fa-lock"></i>
                                 </span>
                                 <span class="icon is-small is-right">
-                                        <i class="fas" id="password-check"></i>
+                                    <i class="fas" id="password-check"></i>
                                 </span>
                             </p>
+                            <p class="help is-danger is-hidden" id="password-help"></p>
                         </div>
-
+                        <!--força senha-->
                         <div class="block is-hidden" id="password-strength-block">
                             <p class="is-size-7">Password Strength</p>
                             <progress class="progress is-small" value="0" max="100" id="password-progress"></progress>
                         </div>
-                        <div class="notification is-hidden" id="password-notification">
-                            <button class="delete" id="password-notification-delete"></button>
-                            <p class="is-size-7" id="password-notification-message">Requisitos da senha</p>
-                        </div>
-
                         <!--confirma senha-->
                         <div class="field mb-0">
                             <p class="control has-icons-left has-icons-right">
                                 <input class="input" type="password" placeholder="Confirm your password"
                                        id="password-confirm" disabled>
                                 <span class="icon is-small is-left">
-                                        <i class="fas fa-lock"></i>
+                                    <i class="fas fa-lock"></i>
                                 </span>
                                 <span class="icon is-small is-right">
-                                        <i class="fas" id="password-confirm-check"></i>
+                                    <i class="fas" id="password-confirm-check"></i>
                                 </span>
                             </p>
-                        </div>
-                        <div class="block">
-                            <p id="password-confirm-message" class="is-size-7 has-text-left has-text-danger is-hidden">
-                                Password must be equal</p>
+                            <p class="help is-danger is-hidden" id="password-confirm-help"></p>
                         </div>
 
                         <!--botao enviar-->

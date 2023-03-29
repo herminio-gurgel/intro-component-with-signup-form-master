@@ -5,33 +5,38 @@ export class PasswordController {
     constructor() {
         this.inputPassword = $('#password')
         this.passwordCheck = $('#password-check')
-        this.inputConfirmPassword = $('#password-confirm')
-        this.passwordConfirmCheck = $('#password-confirm-check')
+        this.passwordHelp = $('#password-help')
+        this.passwordHelpMessage = ''
+        this.passwordStrength = 0
         this.passwordView = new PasswordView()
         this.cadastroView = new CadastroView()
 
+        this.inputConfirmPassword = $('#password-confirm')
+        this.passwordConfirmCheck = $('#password-confirm-check')
+        this.passwordConfirmHelp = $('#password-confirm-help')
 
         this.inputPassword.on('blur', () => {
-            this.passwordView.fechaForcaSenha()
+            this.validaCampo()
+            this.passwordView.passwordProgressBlock.toggleClass('is-hidden', true)
         })
 
         this.inputPassword.on('input', () => {
-            this.passwordView.exibeForcaSenha()
             this.validaSenha()
+            this.passwordView.atualizaForcaSenha(this.passwordStrength)
+        })
+
+        this.inputConfirmPassword.on('blur', () => {
+            //     todo
         })
 
         this.inputConfirmPassword.on('input', () => {
-            this.confirmaSenha()
-        })
-        this.inputConfirmPassword.on('blur', () => {
-            this.confirmaSenha()
+            //     todo
         })
     }
 
     validaSenha() {
         let pw = this.inputPassword.val()
         let issues = []
-        let requisitoSenha = ''
         let forcaSenha = 5
 
         if (pw.length < 8) {
@@ -58,22 +63,14 @@ export class PasswordController {
             issues.push('contain a special character')
         }
 
+        this.passwordStrength = forcaSenha;
+
         if (issues.length > 0) {
-            requisitoSenha = this.sentence(issues)
-            this.passwordView.exibeNotificacao(requisitoSenha)
-            this.forcaSenha(forcaSenha)
-            this.passwordView.passwordConfirmDisable()
-            this.cadastroView.invalido(this.inputPassword, this.passwordCheck)
+            this.passwordHelpMessage = this.sentence(issues)
             return false
-        } else {
-            this.passwordView.fechaNotificacao()
-            this.forcaSenha(forcaSenha)
-            this.passwordView.passwordConfirmEnable()
-            this.cadastroView.valido(this.inputPassword, this.passwordCheck)
-            return true
-
         }
-
+        this.passwordHelpMessage = ''
+        return true
     }
 
     sentence(reasons) {
@@ -92,18 +89,25 @@ export class PasswordController {
         }
     }
 
-    forcaSenha(nivelSeguranca) {
-        this.passwordView.atualizaForcaSenha(nivelSeguranca)
+    validaCampo() {
+        if (!this.validaSenha()) {
+            this.cadastroView.invalidaInput(this.inputPassword, this.passwordCheck, this.passwordHelp, this.passwordHelpMessage)
+            this.passwordView.passwordProgressBlock.toggleClass('is-hidden', true)
+            return false
+        }
+        this.cadastroView.validaInput(this.inputPassword, this.passwordCheck, this.passwordHelp)
+        this.passwordView.passwordProgressBlock.toggleClass('is-hidden', true)
+        return true
     }
 
-    confirmaSenha() {
-        if (this.inputPassword.val() === this.inputConfirmPassword.val()) {
-            this.passwordView.fechaPasswordConfirmMessage()
-            this.cadastroView.valido(this.inputConfirmPassword, this.passwordConfirmCheck)
-            return true
-        }
-            this.passwordView.exibePasswordConfirmMessage()
-            this.cadastroView.invalido(this.inputConfirmPassword, this.passwordConfirmCheck)
-            return false
-    }
+    // confirmaSenha() {
+    //     if (this.inputPassword.val() === this.inputConfirmPassword.val()) {
+    //         // this.passwordView.fechaPasswordConfirmMessage()
+    //         this.cadastroView.valido(this.inputConfirmPassword, this.passwordConfirmCheck)
+    //         return true
+    //     }
+    //     // this.passwordView.exibePasswordConfirmMessage()
+    //     this.cadastroView.invalido(this.inputConfirmPassword, this.passwordConfirmCheck)
+    //     return false
+    // }
 }

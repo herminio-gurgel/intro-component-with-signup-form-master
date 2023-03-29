@@ -1,25 +1,20 @@
 export class CadastroView {
-//configura as classes e icones dos elementos quando validados
-    invalido(elemento, icone) {
-        elemento.removeClass('is-primary')
-        elemento.addClass('is-danger')
-        icone.removeClass('fa-check has-text-primary')
-        icone.addClass('fa-xmark has-text-danger')
+
+    invalidaInput(input, icon, helper, helperMessage) {
+        input.removeClass('is-primary')
+        input.addClass('is-danger')
+        icon.removeClass('fa-check has-text-primary')
+        icon.addClass('fa-xmark has-text-danger')
+        helper.removeClass('is-hidden')
+        helper.text(helperMessage)
     }
 
-    valido(elemento, icone){
-        elemento.removeClass('is-danger')
-        elemento.addClass('is-primary')
-        icone.removeClass('fa-xmark has-text-danger')
-        icone.addClass('fa-check has-text-primary')
-    }
-
-//exibe ou oculta determinado elemento
-    exibeElemento(elemento){
-        elemento.removeClass('is-hidden')
-    }
-
-    ocultaElemento(elemento){
-        elemento.addClass('is-hidden')
+    validaInput(input, icon, helper) {
+        input.removeClass('is-danger')
+        input.addClass('is-primary')
+        icon.removeClass('fa-xmark has-text-danger')
+        icon.addClass('fa-check has-text-primary')
+        helper.addClass('is-hidden')
+        helper.text('')
     }
 }

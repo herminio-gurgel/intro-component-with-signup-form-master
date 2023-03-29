@@ -5,6 +5,7 @@ export class EmailController {
     constructor() {
         this.inputEmail = $('#email')
         this.checkIcon = $('#email-check')
+        this.emailHelper = $('#email-help')
         this.cadastroView = new CadastroView()
         this.adicionaEvento()
         this.regex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/
@@ -12,12 +13,12 @@ export class EmailController {
 
     adicionaEvento() {
         this.inputEmail.on('blur', () => {
-
-            if (this.valida()) {
-                this.cadastroView.valido(this.inputEmail, this.checkIcon)
-            } else {
-                this.cadastroView.invalido(this.inputEmail, this.checkIcon)
+            if (!this.valida()) {
+                this.cadastroView.invalidaInput(this.inputEmail, this.checkIcon, this.emailHelper, 'Email inválido')
+                return false
             }
+            this.cadastroView.validaInput(this.inputEmail, this.checkIcon, this.emailHelper)
+            return true
         })
     }
 

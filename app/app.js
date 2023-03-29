@@ -6,5 +6,5 @@ import {CadastroController} from "./controller/CadastroController.js";
 
 const nomeController = new NomeController()
 const emailController = new EmailController()
-const passwordController = new PasswordController();
+const passwordController = new PasswordController()
 const cadastroController = new CadastroController()
