@@ -11,5 +11,4 @@ export class PasswordView {
         this.passwordProgressBar.removeClass('is-danger is-dangger is-warning is-primary is-success')
         this.passwordProgressBar.addClass(classeNotificacao[nivelDeSeguranca - 1])
     }
-
 }

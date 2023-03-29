@@ -12,6 +12,7 @@ export class PasswordController {
         this.cadastroView = new CadastroView()
 
         this.inputConfirmPassword = $('#password-confirm')
+        this.inputConfirmPassword.attr('disabled', true)
         this.passwordConfirmCheck = $('#password-confirm-check')
         this.passwordConfirmHelp = $('#password-confirm-help')
 
@@ -26,12 +27,9 @@ export class PasswordController {
         })
 
         this.inputConfirmPassword.on('blur', () => {
-            //     todo
+            this.confirmaSenha()
         })
 
-        this.inputConfirmPassword.on('input', () => {
-            //     todo
-        })
     }
 
     validaSenha() {
@@ -93,21 +91,21 @@ export class PasswordController {
         if (!this.validaSenha()) {
             this.cadastroView.invalidaInput(this.inputPassword, this.passwordCheck, this.passwordHelp, this.passwordHelpMessage)
             this.passwordView.passwordProgressBlock.toggleClass('is-hidden', true)
+            this.inputConfirmPassword.attr('disabled', true)
             return false
         }
         this.cadastroView.validaInput(this.inputPassword, this.passwordCheck, this.passwordHelp)
         this.passwordView.passwordProgressBlock.toggleClass('is-hidden', true)
+        this.inputConfirmPassword.attr('disabled', false)
         return true
     }
 
-    // confirmaSenha() {
-    //     if (this.inputPassword.val() === this.inputConfirmPassword.val()) {
-    //         // this.passwordView.fechaPasswordConfirmMessage()
-    //         this.cadastroView.valido(this.inputConfirmPassword, this.passwordConfirmCheck)
-    //         return true
-    //     }
-    //     // this.passwordView.exibePasswordConfirmMessage()
-    //     this.cadastroView.invalido(this.inputConfirmPassword, this.passwordConfirmCheck)
-    //     return false
-    // }
+    confirmaSenha() {
+        if (this.inputPassword.val() === this.inputConfirmPassword.val()) {
+            this.cadastroView.validaInput(this.inputConfirmPassword, this.passwordConfirmCheck, this.passwordConfirmHelp)
+            return true
+        }
+        this.cadastroView.invalidaInput(this.inputConfirmPassword, this.passwordConfirmCheck, this.passwordConfirmHelp, 'As senhas devem ser iguais')
+        return false
+    }
 }

@@ -2,12 +2,16 @@ import {NomeController} from "./NomeController.js";
 import {EmailController} from "./EmailController.js";
 import {PasswordController} from "./PasswordController.js";
 
-export class CadastroController {
+export class SubmitController {
     constructor() {
         this.inputSubmit = $('#submit-button')
         this.modal = $('#modal')
+
+        this.modalCardTitle = $('#modal-card-title')
         this.modalClose = $('#modal-close')
+        this.modalCardBody = $('#modal-card-body')
         this.modalButton = $('#modal-button')
+
         this.nomeController = new NomeController()
         this.emailController = new EmailController()
         this.passwordController = new PasswordController()
@@ -30,7 +34,6 @@ export class CadastroController {
 
     enviaFormulario() {
         if (!this.validaFormulario()) {
-            // console.log(this.validaFormulario())
             this.modalSwitch()
         }
     }
