@@ -13,7 +13,7 @@ export class EmailController {
 
     adicionaEvento() {
         this.inputEmail.on('blur', () => {
-            if (!this.valida()) {
+            if (!this.validaEmail()) {
                 this.cadastroView.invalidaInput(this.inputEmail, this.checkIcon, this.emailHelper, 'Email inválido')
                 return false
             }
@@ -22,7 +22,7 @@ export class EmailController {
         })
     }
 
-    valida() {
+    validaEmail() {
         let email = this.inputEmail.val()
         if (!email)
             return false;

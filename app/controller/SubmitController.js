@@ -1,64 +1,45 @@
 import {NomeController} from "./NomeController.js";
 import {EmailController} from "./EmailController.js";
 import {PasswordController} from "./PasswordController.js";
+import {SubmitView} from "../view/SubmitView.js";
 
 export class SubmitController {
+
     constructor() {
-        this.inputSubmit = $('#submit-button')
-        this.modal = $('#modal')
-
-        this.modalCardTitle = $('#modal-card-title')
-        this.modalClose = $('#modal-close')
-        this.modalCardBody = $('#modal-card-body')
-        this.modalButton = $('#modal-button')
-
         this.nomeController = new NomeController()
         this.emailController = new EmailController()
         this.passwordController = new PasswordController()
+        this.submitView = new SubmitView();
+        this.inputSubmit = $('#submit-button')
 
         this.inputSubmit.on('click', (e) => {
             e.preventDefault()
-            this.enviaFormulario()
+            this.validaFormulario()
         })
-
-        this.modalClose.on('click', (e) => {
-            e.preventDefault()
-            this.enviaFormulario()
-        })
-
-        this.modalButton.on('click', (e) => {
-            e.preventDefault()
-            this.enviaFormulario()
-        })
-    }
-
-    enviaFormulario() {
-        if (!this.validaFormulario()) {
-            this.modalSwitch()
-        }
     }
 
     validaFormulario() {
+        this.submitView.searchSpinner(this.inputSubmit)
+
+        let issues = []
+
         if (!this.nomeController.validaNome()) {
+            issues.push('Nome inválido')
+        }
+
+        if (!this.emailController.validaEmail()) {
+            issues.push('Email inválido')
+        }
+
+        if (!this.passwordController.validaSenha() || !this.passwordController.confirmaSenha()) {
+            issues.push('Senha inválida')
+        }
+
+        if (issues.length > 0) {
+            this.submitView.exibeModal('Dados inválidos', issues)
             return false
         }
 
-        if (!this.emailController.valida()) {
-            return false
-        }
-
-        if (!this.passwordController.validaSenha()) {
-            return false
-        }
-
-        if (!this.passwordController.confirmaSenha()) {
-            return false
-        }
-
-        return true
-    }
-
-    modalSwitch() {
-        this.modal.toggle('is-active')
+        this.submitView.exibeModal('Cadastro realizado', 'Você receberá um email para confirmação dos dados')
     }
 }
